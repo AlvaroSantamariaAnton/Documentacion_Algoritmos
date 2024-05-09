@@ -1,0 +1,111 @@
+Ejemplo:
+--------
+
+Script de python:
+
+def ordenacion_insercion_dicotomica(t):
+    # Recorremos la lista desde el segundo elemento hasta el último
+    for i in range(1, len(t)):
+        clave = t[i]  # Clave a insertar en su posición correcta
+        inicio = 0    # Inicializamos el índice de inicio de la búsqueda
+        fin = i - 1   # Inicializamos el índice de fin de la búsqueda en la sublista ordenada
+        
+        # Búsqueda binaria para encontrar la posición de inserción de la clave
+        while inicio <= fin:
+            # Calculamos el índice medio de la sublista
+            mitad = (inicio + fin) // 2
+            # Si la clave es mayor que el elemento en el índice medio, ajustamos los límites
+            if t[mitad] < clave:
+                inicio = mitad + 1
+            # Si la clave es menor o igual que el elemento en el índice medio, ajustamos los límites
+            else:
+                fin = mitad - 1
+        
+        # Desplazamos los elementos para hacer espacio para la inserción
+        for j in range(i, inicio, -1):
+            t[j] = t[j - 1]
+        
+        # Insertamos la clave en su posición correcta
+        t[inicio] = clave
+
+# Ejemplo de uso
+t = [5, 2, 7, 1, 9, 3]
+ordenacion_insercion_dicotomica(t)
+print("Tabla ordenada por inserción dicotómica:", t)
+
+------------------------------------------------------------------------------------------------------
+
+Especificación de requisitos para el script proporcionado:
+
+Nombre de la Función:
+"ordenacion_insercion_dicotomica"
+
+Descripción:
+Esta función ordena una lista de elementos utilizando el algoritmo de ordenación por inserción dicotómica.
+
+Parámetros de Entrada:
+"t": Una lista de elementos que se desea ordenar. Se espera que los elementos sean comparables entre sí.
+
+Salida:
+La lista "t" ordenada en orden ascendente.
+
+Algoritmo:
+1. Recorre la lista desde el segundo elemento hasta el último.
+2. Para cada elemento en la lista, se realiza una búsqueda binaria para encontrar su posición de inserción correcta en la sublista ordenada.
+3. Desplaza los elementos para hacer espacio para la inserción.
+4. Inserta el elemento en su posición correcta.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+Pseudocódigo:
+
+Función ordenacion_insercion_dicotomica(t):
+    Para cada índice i desde 1 hasta len(t) - 1:
+        clave = t[i]
+        inicio = 0
+        fin = i - 1
+        
+        Mientras inicio <= fin:
+            Calcula el índice medio mitad = (inicio + fin) // 2
+            Si t[mitad] < clave:
+                inicio = mitad + 1
+            Sino:
+                fin = mitad - 1
+        
+        Para cada índice j desde i hasta inicio (exclusivo) decrementando -1:
+            t[j] = t[j - 1]
+        
+        t[inicio] = clave
+
+# Ejemplo de uso
+t = [5, 2, 7, 1, 9, 3]
+ordenacion_insercion_dicotomica(t)
+Imprimir "Tabla ordenada por inserción dicotómica:", t
+
+-----------------------------------------------------------------------------------------------------
+
+Comportamiento y Restricciones:
+- La función espera una lista de elementos comparables.
+- La lista puede contener cualquier tipo de elementos que admitan comparación.
+- La lista se modificará in situ, es decir, no se devuelve una nueva lista ordenada sino que la lista original es modificada.
+
+Precondición:
+La precondición es que la lista de entrada "t" debe ser una lista de elementos comparables. 
+Es decir, los elementos deben tener definido un orden entre sí.
+
+Poscondición:
+La poscondición es que al finalizar la ejecución de la función, la lista "t" estará ordenada en orden ascendente.
+
+Datos de Entrada:
+La función toma una lista "t" como su único parámetro de entrada.
+
+Datos de Salida:
+No hay un valor de retorno explícito de la función, pero la lista "t" será modificada in situ y estará ordenada en orden ascendente después de la ejecución de la función.
+
+Hipótesis:
+Se asume que los elementos en la lista "t" son comparables entre sí. 
+Es decir, se pueden utilizar operadores de comparación como < y > con los elementos de la lista.
+
+Efecto:
+El efecto principal de la función es ordenar la lista "t" utilizando el algoritmo de ordenación por inserción dicotómica. 
+Esto implica modificar la lista "t" en su lugar, reorganizando sus elementos para que estén en orden ascendente.
